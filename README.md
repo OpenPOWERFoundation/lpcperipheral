@@ -4,6 +4,9 @@ This is an LPC peripheral that implements LPC IO and FW cycles so that
 it can boot a host like a POWER9. This peripheral would typically sit
 inside a BMC SoC.
 
+It implements the Intel Low Pin Count (LPC) spec from
+[here](https://www.intel.com/content/dam/www/program/design/us/en/documents/low-pin-count-interface-specification.pdf).
+
 # System diagram
 ```
                               .
