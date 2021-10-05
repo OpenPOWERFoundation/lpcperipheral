@@ -98,8 +98,11 @@ class LPCPeripheral(Elaboratable):
             lpc_ctrl.dma_wb.dat_r.eq(self.dma_dat_r),
             lpc_ctrl.dma_wb.ack.eq(self.dma_ack),
 
-            # LPC to LPC CTRL wishbone
+            # LPC to LPC CTRL DMA wishbone
             lpc.fw_wb.connect(lpc_ctrl.lpc_wb),
+
+            # LPC CTRL I/O wishbone
+            io.lpc_ctrl_wb.connect(lpc_ctrl.io_wb),
 
             # LPC
             lpc.lclk.eq(self.lclk),
