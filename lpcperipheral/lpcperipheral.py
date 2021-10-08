@@ -129,4 +129,4 @@ if __name__ == "__main__":
             top.dma_sel, top.dma_cyc, top.dma_stb, top.dma_we, top.dma_ack,
             top.lclk, top.lframe, top.lad_in,
             top.lad_out, top.lad_en, top.lreset, top.bmc_vuart_irq,
-            top.bmc_ipmi_irq, top.target_vuart_irq, top.target_ipmi_irq]))
+            top.bmc_ipmi_irq, top.target_vuart_irq, top.target_ipmi_irq], name="lpc_top"))
