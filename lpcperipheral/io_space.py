@@ -13,22 +13,21 @@ class IOSpace(Elaboratable):
                  bmc_lpc_ctrl_addr=0x2000,
                  target_vuart_addr=0x3f8, target_ipmi_addr=0xe4):
         self.vuart_depth = vuart_depth
-        # BMC wishbone is 32 bit wide, so divide addresses by 4
-        self.bmc_vuart_addr = bmc_vuart_addr // 4
-        self.bmc_ipmi_addr = bmc_ipmi_addr // 4
-        self.bmc_lpc_ctrl_addr = bmc_lpc_ctrl_addr // 4
+        self.bmc_vuart_addr = bmc_vuart_addr
+        self.bmc_ipmi_addr = bmc_ipmi_addr
+        self.bmc_lpc_ctrl_addr = bmc_lpc_ctrl_addr
         self.target_vuart_addr = target_vuart_addr
         self.target_ipmi_addr = target_ipmi_addr
 
         self.bmc_vuart_irq = Signal()
         self.bmc_ipmi_irq = Signal()
-        self.bmc_wb = WishboneInterface(addr_width=14, data_width=8)
+        self.bmc_wb = WishboneInterface(addr_width=14, data_width=32, granularity=8)
+
+        self.lpc_ctrl_wb = WishboneInterface(addr_width=3, data_width=32, granularity=8)
 
         self.target_vuart_irq = Signal()
         self.target_ipmi_irq = Signal()
         self.target_wb = WishboneInterface(addr_width=16, data_width=8, features=["err"])
-
-        self.lpc_ctrl_wb = WishboneInterface(addr_width=3, data_width=8)
 
         self.error_wb = WishboneInterface(addr_width=2, data_width=8,
                                           features=["err"])
@@ -40,18 +39,18 @@ class IOSpace(Elaboratable):
         m.submodules.ipmi_bt = ipmi_bt = IPMI_BT()
 
         # BMC address decode
-        m.submodules.bmc_decode = bmc_decode = WishboneDecoder(addr_width=14, data_width=8, granularity=8)
+        m.submodules.bmc_decode = bmc_decode = WishboneDecoder(addr_width=14, data_width=32, granularity=8)
 
         bmc_ipmi_bus = ipmi_bt.bmc_wb
-        bmc_ipmi_bus.memory_map = MemoryMap(addr_width=3, data_width=8)
+        bmc_ipmi_bus.memory_map = MemoryMap(addr_width=5, data_width=8)
         bmc_decode.add(bmc_ipmi_bus, addr=self.bmc_ipmi_addr)
 
         bmc_vuart_bus = vuart_joined.wb_a
-        bmc_vuart_bus.memory_map = MemoryMap(addr_width=3, data_width=8)
+        bmc_vuart_bus.memory_map = MemoryMap(addr_width=5, data_width=8)
         bmc_decode.add(bmc_vuart_bus, addr=self.bmc_vuart_addr)
 
         lpc_ctrl_bus = self.lpc_ctrl_wb
-        lpc_ctrl_bus.memory_map = MemoryMap(addr_width=3, data_width=8)
+        lpc_ctrl_bus.memory_map = MemoryMap(addr_width=5, data_width=8)
         bmc_decode.add(lpc_ctrl_bus, addr=self.bmc_lpc_ctrl_addr)
 
         m.d.comb += [

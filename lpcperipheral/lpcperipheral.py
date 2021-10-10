@@ -2,7 +2,6 @@ from enum import Enum, unique
 
 from nmigen import Signal, Elaboratable, Module, Cat
 from nmigen.back import verilog
-from nmigen_soc.wishbone import Interface as WishboneInterface
 
 from .io_space import IOSpace
 from .lpc2wb import lpc2wb
@@ -27,8 +26,8 @@ class LPCPeripheral(Elaboratable):
         # BMC wishbone. We dont use a Record because we want predictable
         # signal names so we can hook it up to VHDL/Verilog
         self.adr = Signal(14)
-        self.dat_w = Signal(8)
-        self.dat_r = Signal(8)
+        self.dat_w = Signal(32)
+        self.dat_r = Signal(32)
         self.sel = Signal()
         self.cyc = Signal()
         self.stb = Signal()
@@ -99,8 +98,11 @@ class LPCPeripheral(Elaboratable):
             lpc_ctrl.dma_wb.dat_r.eq(self.dma_dat_r),
             lpc_ctrl.dma_wb.ack.eq(self.dma_ack),
 
-            # LPC to LPC CTRL wishbone
+            # LPC to LPC CTRL DMA wishbone
             lpc.fw_wb.connect(lpc_ctrl.lpc_wb),
+
+            # LPC CTRL I/O wishbone
+            io.lpc_ctrl_wb.connect(lpc_ctrl.io_wb),
 
             # LPC
             lpc.lclk.eq(self.lclk),

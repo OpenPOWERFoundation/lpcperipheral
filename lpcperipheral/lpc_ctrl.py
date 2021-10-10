@@ -26,11 +26,11 @@ class LPC_Ctrl(Elaboratable):
         m = Module()
 
         base_lo_csr = CSRElement(32, "rw")
-        base_lo = Signal(32, reset=192*1024*1024)
+        base_lo = Signal(32)
         #  Leave space for upper 32 bits, unused for now
         base_hi_csr = CSRElement(32, "rw")
         mask_lo_csr = CSRElement(32, "rw")
-        mask_lo = Signal(32, reset=0x3FFFFFF)
+        mask_lo = Signal(32)
         #  Leave space for upper 32 bits, unused for now
         mask_hi_csr = CSRElement(32, "rw")
 
@@ -56,7 +56,7 @@ class LPC_Ctrl(Elaboratable):
 
         m.d.comb += [
             self.lpc_wb.connect(self.dma_wb),
-            # bask/mask are in bytes, so convert to wishbone addresses
+            # base/mask are in bytes, so convert to wishbone addresses
             self.dma_wb.adr.eq((self.lpc_wb.adr & (mask_lo >> 2)) | (base_lo >> 2))
         ]
 
