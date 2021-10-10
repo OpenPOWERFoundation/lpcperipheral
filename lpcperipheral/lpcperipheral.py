@@ -2,7 +2,6 @@ from enum import Enum, unique
 
 from nmigen import Signal, Elaboratable, Module, Cat
 from nmigen.back import verilog
-from nmigen_soc.wishbone import Interface as WishboneInterface
 
 from .io_space import IOSpace
 from .lpc2wb import lpc2wb
