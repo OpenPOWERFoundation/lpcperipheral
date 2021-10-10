@@ -7,7 +7,6 @@ from nmigen_soc.memory import MemoryMap
 from .ipmi_bt import IPMI_BT
 from .vuart_joined import VUartJoined
 
-
 class IOSpace(Elaboratable):
     def __init__(self, vuart_depth=2048, bmc_vuart_addr=0x0, bmc_ipmi_addr=0x1000,
                  bmc_lpc_ctrl_addr=0x2000,
