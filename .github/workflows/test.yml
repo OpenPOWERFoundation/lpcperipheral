@@ -1,5 +1,12 @@
 name: test
-on: [push]
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: '0 0 * * 5'
+  workflow_dispatch:
+
 jobs:
   Unittests:
     runs-on: ubuntu-latest
