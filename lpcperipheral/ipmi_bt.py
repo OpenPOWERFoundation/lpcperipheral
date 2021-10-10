@@ -38,7 +38,7 @@ class IPMI_BT(Elaboratable):
     def __init__(self, depth=64):
         self.depth = depth
 
-        self.bmc_wb = WishboneInterface(data_width=8, addr_width=3)
+        self.bmc_wb = WishboneInterface(data_width=32, addr_width=3, granularity=8)
         self.bmc_irq = Signal()
 
         self.target_wb = WishboneInterface(data_width=8, addr_width=2)

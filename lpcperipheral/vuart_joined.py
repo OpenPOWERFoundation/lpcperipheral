@@ -21,10 +21,10 @@ class VUartJoined(Elaboratable):
         self.depth = depth
 
         self.irq_a = Signal()
-        self.wb_a = WishboneInterface(data_width=8, addr_width=3)
+        self.wb_a = WishboneInterface(data_width=32, addr_width=3, granularity=8)
 
         self.irq_b = Signal()
-        self.wb_b = WishboneInterface(data_width=8, addr_width=3)
+        self.wb_b = WishboneInterface(data_width=8, addr_width=3, granularity=8)
 
     def elaborate(self, platform):
         m = Module()

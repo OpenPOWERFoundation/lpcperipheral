@@ -26,8 +26,8 @@ class LPCPeripheral(Elaboratable):
         # BMC wishbone. We dont use a Record because we want predictable
         # signal names so we can hook it up to VHDL/Verilog
         self.adr = Signal(14)
-        self.dat_w = Signal(8)
-        self.dat_r = Signal(8)
+        self.dat_w = Signal(32)
+        self.dat_r = Signal(32)
         self.sel = Signal()
         self.cyc = Signal()
         self.stb = Signal()
