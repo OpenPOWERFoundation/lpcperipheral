@@ -1,6 +1,6 @@
 import unittest
 
-from nmigen.sim import Simulator
+from amaranth.sim import Simulator
 
 from lpcperipheral.vuart import VUart, RegEnum, LCR_DLAB
 from .helpers import Helpers

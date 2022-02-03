@@ -7,12 +7,12 @@
 # DMA access into another master wishbone bus. Base and mask registers
 # (accessible via an IO wishbone bus) configure this
 
-from nmigen import Elaboratable, Module, Signal
-from nmigen_soc.wishbone import Interface as WishboneInterface
-from nmigen_soc.csr import Multiplexer as CSRMultiplexer
-from nmigen_soc.csr import Element as CSRElement
-from nmigen_soc.csr.wishbone import WishboneCSRBridge
-from nmigen.back import verilog
+from amaranth import Elaboratable, Module, Signal
+from amaranth_soc.wishbone import Interface as WishboneInterface
+from amaranth_soc.csr import Multiplexer as CSRMultiplexer
+from amaranth_soc.csr import Element as CSRElement
+from amaranth_soc.csr.wishbone import WishboneCSRBridge
+from amaranth.back import verilog
 
 
 class LPC_Ctrl(Elaboratable):

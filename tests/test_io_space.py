@@ -1,6 +1,6 @@
 import unittest
 
-from nmigen.sim import Simulator
+from amaranth.sim import Simulator
 
 from lpcperipheral.io_space import IOSpace
 from lpcperipheral.ipmi_bt import RegEnum, BMCRegEnum

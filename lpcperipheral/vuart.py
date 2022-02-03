@@ -1,8 +1,8 @@
 from enum import Enum, unique
 
-from nmigen import Signal, Elaboratable, Module
-from nmigen_soc.wishbone import Interface as WishboneInterface
-from nmigen.back import verilog
+from amaranth import Signal, Elaboratable, Module
+from amaranth_soc.wishbone import Interface as WishboneInterface
+from amaranth.back import verilog
 
 
 @unique

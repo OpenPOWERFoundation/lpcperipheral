@@ -1,7 +1,7 @@
 import unittest
 import random
 
-from nmigen.sim import Simulator
+from amaranth.sim import Simulator
 
 from lpcperipheral.lpc2wb import lpc2wb
 

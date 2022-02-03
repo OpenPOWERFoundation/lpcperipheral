@@ -23,8 +23,8 @@
 #
 
 from enum import Enum, unique
-from nmigen import Signal, Elaboratable, Module, unsigned, Cat
-from nmigen.back import verilog
+from amaranth import Signal, Elaboratable, Module, unsigned, Cat
+from amaranth.back import verilog
 import math
 
 @unique

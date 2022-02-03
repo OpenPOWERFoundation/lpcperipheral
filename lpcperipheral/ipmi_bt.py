@@ -1,10 +1,10 @@
 from enum import IntEnum, unique
 
-from nmigen import Signal, Elaboratable, Module, ResetInserter, Cat
-from nmigen_soc.wishbone import Interface as WishboneInterface
-from nmigen.lib.fifo import SyncFIFOBuffered
+from amaranth import Signal, Elaboratable, Module, ResetInserter, Cat
+from amaranth_soc.wishbone import Interface as WishboneInterface
+from amaranth.lib.fifo import SyncFIFOBuffered
 
-from nmigen.back import verilog
+from amaranth.back import verilog
 
 
 @unique

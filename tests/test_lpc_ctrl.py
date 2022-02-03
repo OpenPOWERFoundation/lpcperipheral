@@ -1,8 +1,8 @@
 import unittest
 
-from nmigen import Elaboratable, Module
-from nmigen_soc.wishbone import Interface as WishboneInterface
-from nmigen.sim import Simulator
+from amaranth import Elaboratable, Module
+from amaranth_soc.wishbone import Interface as WishboneInterface
+from amaranth.sim import Simulator
 
 from lpcperipheral.lpc_ctrl import LPC_Ctrl
 

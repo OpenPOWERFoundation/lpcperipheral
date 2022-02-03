@@ -1,8 +1,8 @@
-from nmigen import Elaboratable, Module, Signal
-from nmigen.back import verilog
-from nmigen_soc.wishbone import Decoder as WishboneDecoder
-from nmigen_soc.wishbone import Interface as WishboneInterface
-from nmigen_soc.memory import MemoryMap
+from amaranth import Elaboratable, Module, Signal
+from amaranth.back import verilog
+from amaranth_soc.wishbone import Decoder as WishboneDecoder
+from amaranth_soc.wishbone import Interface as WishboneInterface
+from amaranth_soc.memory import MemoryMap
 
 from .ipmi_bt import IPMI_BT
 from .vuart_joined import VUartJoined

@@ -12,14 +12,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: pip3 install 'git+https://github.com/nmigen/nmigen.git'
-      - run: pip3 install 'git+https://github.com/nmigen/nmigen-soc.git'
+      - run: pip3 install 'git+https://github.com/amaranth-lang/amaranth.git'
+      - run: pip3 install 'git+https://github.com/amaranth-lang/amaranth-soc.git'
       - run: python -m unittest -v
 
   Verilog:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: pip install git+https://github.com/nmigen/nmigen.git#egg=nmigen[builtin-yosys]
-      - run: pip3 install 'git+https://github.com/nmigen/nmigen-soc.git'
+      - run: pip install git+https://github.com/amaranth-lang/amaranth.git#egg=amaranth[builtin-yosys]
+      - run: pip3 install 'git+https://github.com/amaranth-lang/amaranth-soc.git'
       - run: python -m lpcperipheral.lpcperipheral

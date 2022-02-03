@@ -1,7 +1,7 @@
-from nmigen import Signal, Elaboratable, Module
-from nmigen.back import verilog
-from nmigen.lib.fifo import SyncFIFOBuffered
-from nmigen_soc.wishbone import Interface as WishboneInterface
+from amaranth import Signal, Elaboratable, Module
+from amaranth.back import verilog
+from amaranth.lib.fifo import SyncFIFOBuffered
+from amaranth_soc.wishbone import Interface as WishboneInterface
 
 from .vuart import VUart
 

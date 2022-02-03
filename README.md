@@ -50,8 +50,8 @@ The LPC front end runs using the LPC clock. The rest of the design
 works on the normal system clock. Async FIFOs provide a safe boundary
 between the two.
 
-HDL is written in nmigen because that's what all the cool kids are
-doing. This is our first nmigen project, and we are software
+HDL is written in amaranth because that's what all the cool kids are
+doing. This is our first amaranth project, and we are software
 developers, so be kind!
 
 # Building

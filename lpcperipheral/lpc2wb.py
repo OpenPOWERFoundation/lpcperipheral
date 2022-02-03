@@ -33,11 +33,11 @@
 # the LPC.
 #
 
-from nmigen import Signal, Elaboratable, Module
-from nmigen import ClockSignal, Cat, DomainRenamer, ResetSignal, ResetInserter
-from nmigen.lib.fifo import AsyncFIFO
-from nmigen_soc.wishbone import Interface as WishboneInterface
-from nmigen.back import verilog
+from amaranth import Signal, Elaboratable, Module
+from amaranth import ClockSignal, Cat, DomainRenamer, ResetSignal, ResetInserter
+from amaranth.lib.fifo import AsyncFIFO
+from amaranth_soc.wishbone import Interface as WishboneInterface
+from amaranth.back import verilog
 
 from .lpcfront import lpcfront, LPCCycletype, LPC_FW_DATA_WIDTH, LPC_FW_ADDR_WIDTH, LPC_IO_DATA_WIDTH, LPC_IO_ADDR_WIDTH
 

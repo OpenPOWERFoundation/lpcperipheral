@@ -1,6 +1,6 @@
 import unittest
 
-from nmigen.sim import Simulator
+from amaranth.sim import Simulator
 
 from lpcperipheral.vuart import RegEnum
 from lpcperipheral.vuart_joined import VUartJoined

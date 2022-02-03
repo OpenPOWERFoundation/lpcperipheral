@@ -3,7 +3,7 @@
 # This is a little test program so I could work out how multiple clock
 # domains work. Not really part of this project but a handy refrence
 
-from nmigen import *
+from amaranth import *
 from enum import Enum, unique
 
 class clocks(Elaboratable):
@@ -29,7 +29,7 @@ class clocks(Elaboratable):
         return m
 
 # --- TEST ---
-from nmigen.sim import Simulator
+from amaranth.sim import Simulator
 
 
 dut = clocks()
